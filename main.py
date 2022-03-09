@@ -25,6 +25,6 @@ wafermap = json.load(f)
 async def hello():
     return {'hello':'world'}
 
-@app.post('/wafermap/')
+@app.get('/wafermap/')
 async def test():
     return wafermap
