@@ -1,5 +1,4 @@
-from fastapi import FastAPI
-import numpy as np
+from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import json
@@ -19,7 +18,7 @@ app.add_middleware(
 
 f = open('wafermap.json')
 
-wafermap = json.load(f)
+wafermap = 'No file uploaded'
 
 @app.get('/')
 async def hello():
@@ -28,3 +27,9 @@ async def hello():
 @app.get('/wafermap/')
 async def test():
     return wafermap
+
+@app.post("/file/")
+async def create_upload_file(file: UploadFile = File(...)):
+    global wafermap, f
+    wafermap = json.load(f)
+    return {"filename": file.filename}
