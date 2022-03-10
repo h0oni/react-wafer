@@ -22,6 +22,8 @@ wafermap = 'No file uploaded'
 
 @app.get('/')
 async def hello():
+    global wafermap
+    wafermap = 'No file uploaded'
     return {'hello':'world'}
 
 @app.get('/wafermap/')
