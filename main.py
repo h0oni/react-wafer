@@ -5,10 +5,10 @@ import json
 
 app = FastAPI()
 
-class Post(BaseModel):
-    emp_no: int = 44782
-    line_id: int = 24
-    seq_no: int = 3
+# class Post(BaseModel):
+#     emp_no: int = 44782
+#     line_id: int = 24
+#     seq_no: int = 3
 
 app.add_middleware(
     CORSMiddleware,
@@ -38,6 +38,6 @@ async def create_upload_file(file: UploadFile = File(...)):
     wafermap = json.load(f)
     return {"filename": file.filename}
 
-@app.post("/test/")
-async def test(post:Post):
-    return post
+# @app.post("/test/")
+# async def test(post:Post):
+#     return post
